@@ -290,8 +290,7 @@ attacksToVillage = "---";
 playerVillages.push({ "coordinate": coordinate, "currentPop": currentPop, "totalPop": totalPop, "attacksToVillage": attacksToVillage, "unitsInVillage": unitsInVillage, "unitsEnroute": unitsEnroute });
 };
 //store player information
-playerData.push({ "playerID": playerIDs, "tribeName": tribeName, "playerName": playerName, "attackCount": attackCount, "playerVillages": playerVillages })
-
+playerData.push({ "playerID": playerIDs[i], "tribeName": tribeName, "playerName": playerName, "attackCount": attackCount, "playerVillages": playerVillages });
 
 },
 () => {
@@ -840,8 +839,8 @@ playerData.forEach((el, i) => {
 //checking if we have data or not
 if (settingsData.playerSettings == undefined || settingsData.playerSettings == undefined) {
 if (i < defaultColors.length) {
-el.color = defaultColors.color;
-el.opacity = defaultColors.opacity;
+el.color = (defaultColors[i] || {}).color || "#FFF";
+el.opacity = (defaultColors[i] || {}).opacity || 0.3;
 }
 else {
 el.color = "#FFF";
@@ -852,10 +851,15 @@ checkedWTMini = false;
 }
 else {
 console.log(settingsData.playerSettings);
-el.color = settingsData.playerSettings[0].color;
-el.opacity = settingsData.playerSettings[0].opacity;
-checkedWT = settingsData.playerSettings[1].checkedWT;
-checkedWTMini = settingsData.playerSettings[1].checkedWTMini;
+if (settingsData.playerSettings && settingsData.playerSettings[i]) {
+  el.color = (settingsData.playerSettings[i][0] || {}).color || el.color;
+  el.opacity = (settingsData.playerSettings[i][0] || {}).opacity || el.opacity;
+  checkedWT = (settingsData.playerSettings[i][1] || {}).checkedWT || false;
+  checkedWTMini = (settingsData.playerSettings[i][1] || {}).checkedWTMini || false;
+} else {
+  checkedWT = false;
+  checkedWTMini = false;
+}
 }
 
 //alternate row class for better readability
