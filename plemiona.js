@@ -23,9 +23,9 @@ var playerData = [];
  images[0] = new Image();
  images[1] = new Image();
  images[2] = new Image();
- images[0].src = ("/graphic//map/incoming_attack.png");
- images[1].src = ("/graphic/buildings/wall.png");
- images[2].src = ("/graphic/buildings/farm.png");
+ images[0].src = ("/graphic//map/incoming_attack.webp");
+ images[1].src = ("/graphic/buildings/wall.webp");
+ images[2].src = ("/graphic/buildings/farm.webp");
 
 var defaultColors = [{ "color": "#FF0000", "opacity": 0.3 }, { "color": "#FF5100", "opacity": 0.3 }, { "color": "#FFAE00", "opacity": 0.3 }, { "color": "#F2FF00", "opacity": 0.3 }, { "color": "#B7FF00", "opacity": 0.3 }, { "color": "#62FF00", "opacity": 0.3 }, { "color": "#04FF00", "opacity": 0.3 }, { "color": "#00FF7B", "opacity": 0.3 }, { "color": "#00FFAE", "opacity": 0.3 }, { "color": "#00C8FF", "opacity": 0.3 }, { "color": "#006AFF", "opacity": 0.3 }, { "color": "#1500FF", "opacity": 0.3 }, { "color": "#4000FF", "opacity": 0.3 }, { "color": "#8C00FF", "opacity": 0.3 }, { "color": "#FF00D9", "opacity": 0.3 }];
 if (localStorage.getItem("overwatchSettings")) {
@@ -242,7 +242,7 @@ function getAllData() {
             let playerName = $(data).find(".input-nicer option:selected").text().trim();
             let tribeName = $(data).find("#content_value h2")[0].innerText.split('(')[0].trim();
             if ($(data).find(".table-responsive table").length > 0) {
-                if ($(data).find('#ally_content img[src*="unit/att.png"]').length > 0) {
+                if ($(data).find('#ally_content img[src*="unit/att.webp"]').length > 0) {
                     attackCount = $(data).find(".table-responsive table tr:first th:last")[0].innerText.replace(/[^0-9]/g, '');
                 }
                 else {
@@ -254,7 +254,7 @@ function getAllData() {
             }
             // collecting village information
             let playerVillages = [];
-            if ($(data).find('#ally_content img[src*="unit/att.png"]').length > 0) {
+            if ($(data).find('#ally_content img[src*="unit/att.webp"]').length > 0) {
                 hasIncomings = true;
             }
             else {
@@ -298,10 +298,10 @@ function getAllData() {
             $.getAll(buildingUrls,
                 (j, buildingTable) => {
                     if ($(buildingTable).find(".table-responsive")) {
-                        if ($(buildingTable).find('#ally_content img[src*="buildings/watchtower.png"]').length > 0) {
+                        if ($(buildingTable).find('#ally_content img[src*="buildings/watchtower.webp"]').length > 0) {
                             console.log('watchtower found')
-                            let cellIndex = $(buildingTable).find('#ally_content img[src*="buildings/watchtower.png"]').parent().index();
-                            let wallIndex = $(buildingTable).find('#ally_content img[src*="buildings/wall.png"]').parent().index();
+                            let cellIndex = $(buildingTable).find('#ally_content img[src*="buildings/watchtower.webp"]').parent().index();
+                            let wallIndex = $(buildingTable).find('#ally_content img[src*="buildings/wall.webp"]').parent().index();
                             let rows = $(buildingTable).find('#ally_content tr:nth-child(n+2)');
                             if (playerData[j].playerVillages.length == 0) {
                                 //no player villages found? must not be sharing data on other page, grab coordinates here
@@ -565,24 +565,24 @@ input[type=range]::-webkit-slider-thumb {
                                         <table class='vis' style="width:100%">
                                             <tr style="background-color:#c1a264 !important">
                                                 <th>Overwatch</th>
-                                                <th><img src="/graphic/unit/unit_spear.png" title="" alt="" class=""></th>
-                                                <th><img src="/graphic/unit/unit_sword.png" title="" alt="" class=""></th>
-                                                <th><img src="/graphic/unit/unit_axe.png" title="" alt="" class=""></th>
+                                                <th><img src="/graphic/unit/unit_spear.webp" title="" alt="" class=""></th>
+                                                <th><img src="/graphic/unit/unit_sword.webp" title="" alt="" class=""></th>
+                                                <th><img src="/graphic/unit/unit_axe.webp" title="" alt="" class=""></th>
                                                 ${!archersEnabled ? '' : `
-                                                    <th><img src="/graphic/unit/unit_archer.png" title="" alt="" class=""></th>
+                                                    <th><img src="/graphic/unit/unit_archer.webp" title="" alt="" class=""></th>
                                                     ` }
-                                                <th><img src="/graphic/unit/unit_spy.png" title="" alt="" class=""></th>
-                                                <th><img src="/graphic/unit/unit_light.png" title="" alt="" class=""></th>
+                                                <th><img src="/graphic/unit/unit_spy.webp" title="" alt="" class=""></th>
+                                                <th><img src="/graphic/unit/unit_light.webp" title="" alt="" class=""></th>
                                                 ${!archersEnabled ? '' : `
-                                                    <th><img src="/graphic/unit/unit_marcher.png" title="" alt="" class=""></th>
+                                                    <th><img src="/graphic/unit/unit_marcher.webp" title="" alt="" class=""></th>
                                                     ` }
-                                                <th><img src="/graphic/unit/unit_heavy.png" title="" alt="" class=""></th>
-                                                <th><img src="/graphic/unit/unit_ram.png" title="" alt="" class=""></th>
-                                                <th><img src="/graphic/unit/unit_catapult.png" title="" alt="" class=""></th>
+                                                <th><img src="/graphic/unit/unit_heavy.webp" title="" alt="" class=""></th>
+                                                <th><img src="/graphic/unit/unit_ram.webp" title="" alt="" class=""></th>
+                                                <th><img src="/graphic/unit/unit_catapult.webp" title="" alt="" class=""></th>
                                                 ${!paladinEnabled ? '' : `
-                                                    <th><img src="/graphic/unit/unit_knight.png" title="" alt="" class=""></th>
+                                                    <th><img src="/graphic/unit/unit_knight.webp" title="" alt="" class=""></th>
                                                     ` }
-                                                <th><img src="/graphic/unit/unit_snob.png" title="" alt="" class=""></th>
+                                                <th><img src="/graphic/unit/unit_snob.webp" title="" alt="" class=""></th>
                                             </tr>
                                             ${!troopsHome ? '' : `
                                             <tr>
@@ -771,8 +771,8 @@ function showNotification(msg) {
 }
 
 function toggleUI() {
-    if ($('#toggleIcon[src*="minus.png"]').length > 0) $('#toggleIcon')[0].src = "graphic/plus.png";
-    else $('#toggleIcon')[0].src = "graphic/minus.png";
+    if ($('#toggleIcon[src*="minus.webp"]').length > 0) $('#toggleIcon')[0].src = "graphic/plus.webp";
+    else $('#toggleIcon')[0].src = "graphic/minus.webp";
     $('#toggleUi').toggle();
     $('#titleOverwatch').toggle();
 }
@@ -804,7 +804,7 @@ function createUIOverview() {
                     <div id="tribeLeaderUI" class="ui-widget-content vis" style="min-width:200px;background:#f4e4bc;position:fixed;cursor:move;z-index:999;">
                     <div style="min-height:35px">
                         <h3 id="titleOverwatch" style="display:none;margin: auto;text-align:center;padding-top:6px">Overwatch</h3>
-                        <img id="toggleIcon" style="position:absolute;left:20px;top: 10px;" class="widget-button" onclick="toggleUI();" src="graphic/minus.png" />
+                        <img id="toggleIcon" style="position:absolute;left:20px;top: 10px;" class="widget-button" onclick="toggleUI();" src="graphic/minus.webp" />
                         <div id="toggleUi" style="">
                     <center>
                     <table style="margin:30px 20px">
@@ -931,19 +931,19 @@ function createUIOverview() {
                         <table class="vis overviewWithPadding" style="border: 1px solid #7d510f;margin:20px;">
                             <thead>
                                 <tr>
-                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="spear"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_spear.png" title="Spear fighter" alt="" class=""></a></th>
-                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="sword"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_sword.png" title="Swordsman" alt="" class=""></a></th>
-                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="axe"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_axe.png" title="Axeman" alt="" class=""></a></th>
-                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="archer"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_archer.png" title="Archer" alt="" class=""></a></th>
-                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="spy"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_spy.png" title="Scout" alt="" class=""></a></th>
-                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="light"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_light.png" title="Light cavalry" alt="" class=""></a></th>
-                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="marcher"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_marcher.png" title="Mounted Archer" alt="" class=""></a></th>
-                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="heavy"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_heavy.png" title="Heavy cavalry" alt="" class=""></a></th>
-                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="ram"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_ram.png" title="Ram" alt="" class=""></a></th>
-                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="catapult"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_catapult.png" title="Catapult" alt="" class=""></a></th>
-                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="snob"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_knight.png" title="Knight" alt="" class=""></a></th>
-                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="snob"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_snob.png" title="Noble" alt="" class=""></a></th>
-                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="militia"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_militia.png" title="Militia" alt="" class=""></a></th>
+                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="spear"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_spear.webp" title="Spear fighter" alt="" class=""></a></th>
+                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="sword"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_sword.webp" title="Swordsman" alt="" class=""></a></th>
+                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="axe"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_axe.webp" title="Axeman" alt="" class=""></a></th>
+                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="archer"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_archer.webp" title="Archer" alt="" class=""></a></th>
+                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="spy"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_spy.webp" title="Scout" alt="" class=""></a></th>
+                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="light"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_light.webp" title="Light cavalry" alt="" class=""></a></th>
+                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="marcher"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_marcher.webp" title="Mounted Archer" alt="" class=""></a></th>
+                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="heavy"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_heavy.webp" title="Heavy cavalry" alt="" class=""></a></th>
+                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="ram"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_ram.webp" title="Ram" alt="" class=""></a></th>
+                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="catapult"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_catapult.webp" title="Catapult" alt="" class=""></a></th>
+                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="snob"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_knight.webp" title="Knight" alt="" class=""></a></th>
+                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="snob"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_snob.webp" title="Noble" alt="" class=""></a></th>
+                                    <th style="text-align:center" width="35"><a href="#" class="unit_link" data-unit="militia"><img src="https://dsus.innogamescdn.com/asset/a9e85669/graphic/unit/unit_militia.webp" title="Militia" alt="" class=""></a></th>
                                 </tr>
                             </thead>
                             <tbody>
